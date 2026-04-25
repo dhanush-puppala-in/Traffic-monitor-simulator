@@ -4,6 +4,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend
 } from "recharts";
 
+
 // ─── Theme Config ───────────────────────────────────────────────────────────
 const themes = {
   dark: {
@@ -42,9 +43,8 @@ const themes = {
   },
 };
 
-const API = "http://localhost:8000";
-const WS = "ws://localhost:8000/ws";
-
+const API = "https://traffic-monitor-simulator.onrender.com";   // ← your Render URL
+const WS = "wss://trafficpulse-api.onrender.com/ws";  // ← wss:// not ws://
 // ─── Particle Background ────────────────────────────────────────────────────
 function ParticleCanvas({ mode }) {
   const canvasRef = useRef(null);

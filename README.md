@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌐 TrafficPulse — Live Website Traffic Monitor
 
 Real-time website traffic monitoring dashboard with live charts, metrics, and AI-powered traffic analysis.
@@ -142,3 +143,6 @@ npm run dev
 - Backend: Press `Ctrl+C` in the backend terminal
 - Frontend: Press `Ctrl+C` in the frontend terminal
 - Deactivate Python venv: `deactivate`
+=======
+# Traffic-monitor-simulator
+>>>>>>> db86768e9c434bdfa1181843d71c9bb80b90730a
