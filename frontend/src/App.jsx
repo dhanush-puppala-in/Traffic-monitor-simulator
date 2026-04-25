@@ -44,7 +44,7 @@ const themes = {
 };
 
 const API = "https://traffic-monitor-simulator.onrender.com";   // ← your Render URL
-const WS = "wss://trafficpulse-api.onrender.com/ws";  // ← wss:// not ws://
+const WS = "wss://traffic-monitor-simulator.onrender.comws";  // ← wss:// not ws://
 // ─── Particle Background ────────────────────────────────────────────────────
 function ParticleCanvas({ mode }) {
   const canvasRef = useRef(null);
