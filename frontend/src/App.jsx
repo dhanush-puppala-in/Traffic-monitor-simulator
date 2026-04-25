@@ -257,20 +257,22 @@ export default function App() {
   const t = themes[mode];
 
   // WebSocket
+  // Polling every 2 seconds instead of WebSocket
   useEffect(() => {
-    const connect = () => {
-      const ws = new WebSocket(WS);
-      wsRef.current = ws;
-      ws.onopen = () => setWsStatus("connected");
-      ws.onclose = () => { setWsStatus("disconnected"); setTimeout(connect, 3000); };
-      ws.onerror = () => setWsStatus("error");
-      ws.onmessage = (e) => {
-        const msg = JSON.parse(e.data);
-        if (msg.type === "update") setMonitors(msg.data);
-      };
-    };
-    connect();
-    return () => wsRef.current?.close();
+    setWsStatus("connected");
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`${API}/monitor/list`);
+        const data = await res.json();
+        const mapped = {};
+        data.monitors.forEach(m => { mapped[m.url] = m; });
+        setMonitors(mapped);
+        setWsStatus("connected");
+      } catch (e) {
+        setWsStatus("disconnected");
+      }
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
 
   const startMonitor = async () => {
